@@ -9,4 +9,8 @@ Lack of development from the manufacturer for many years means that the focuser 
 
 It is very simple. It doesn't allow you to set the options of the focuser (but I don't see why you would need to). However, the code could do it. It just needs a UI for that part.
 
+Sources of information:
+- https://github.com/indilib/indi/blob/master/drivers/focuser/robofocus.cpp
+- https://github.com/jbrazio/ardufocus-ascom
+
 No support, no guarantees. This project is only here to help those who would want to build their own driver.
