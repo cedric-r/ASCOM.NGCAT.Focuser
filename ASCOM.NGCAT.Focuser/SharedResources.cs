@@ -25,14 +25,6 @@ using System.Text;
 
 namespace ASCOM.NGCAT
 {
-    /// <summary>
-    /// The resources shared by all drivers and devices, in this example it's a serial port with a shared SendMessage method
-    /// an idea for locking the message and handling connecting is given.
-    /// In reality extensive changes will probably be needed.
-    /// Multiple drivers means that several applications connect to the same hardware device, aka a hub.
-    /// Multiple devices means that there are more than one instance of the hardware, such as two focusers.
-    /// In this case there needs to be multiple instances of the hardware connector, each with it's own connection count.
-    /// </summary>
     public static class SharedResources
     {
         // object used for locking to prevent multiple drivers accessing common code at the same time
@@ -105,9 +97,6 @@ namespace ASCOM.NGCAT
             }
         }
 
-        /// <summary>
-        /// Bla bla bla wrapper
-        /// </summary>
         public static bool Connected
         {
             get
@@ -117,7 +106,7 @@ namespace ASCOM.NGCAT
             }
             set
             {
-                //                if (SharedSerial.Connected == value) { return; }
+                if (SharedSerial.Connected == value) { return; }
 
                 // Check if we are the first client using the shared serial
                 if (value)

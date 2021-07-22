@@ -34,17 +34,6 @@ using System.Threading;
 
 namespace ASCOM.NGCAT
 {
-    //
-    // Your driver's DeviceID is ASCOM.NGCAT.Focuser
-    //
-    // The Guid attribute sets the CLSID for ASCOM.NGCAT.Focuser
-    // The ClassInterface/None addribute prevents an empty interface called
-    // _NGCAT from being created and used as the [default] interface
-    //
-    // TODO Replace the not implemented exceptions with code to implement the function or
-    // throw the appropriate ASCOM exception.
-    //
-
     /// <summary>
     /// ASCOM Focuser Driver for NGCAT.
     /// </summary>
@@ -58,7 +47,7 @@ namespace ASCOM.NGCAT
         /// The DeviceID is used by ASCOM applications to load the driver at runtime.
         /// </summary>
         internal const string driverID = "ASCOM.NGCAT.Focuser";
-        // TODO Change the descriptive string for your driver then remove this line
+
         /// <summary>
         /// Driver description that displays in the ASCOM Chooser.
         /// </summary>
