@@ -389,7 +389,7 @@ namespace ASCOM.NGCAT
             {
                 Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
                 // TODO customise this driver description
-                string driverInfo = "Information about the driver itself. Version: " + String.Format(CultureInfo.InvariantCulture, "{0}.{1}", version.Major, version.Minor);
+                string driverInfo = "Robofocus ASCOM driver. Version: " + String.Format(CultureInfo.InvariantCulture, "{0}.{1}", version.Major, version.Minor);
                 SharedResources.LogMessage("DriverInfo Get", driverInfo);
                 return driverInfo;
             }
