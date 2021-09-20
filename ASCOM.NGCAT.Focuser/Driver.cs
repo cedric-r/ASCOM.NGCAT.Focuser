@@ -368,7 +368,7 @@ namespace ASCOM.NGCAT
             }
             catch(Exception e)
             {
-                SharedResources.LogMessage("InitDevice", "Erro: " + e.Message + "\n" + e.StackTrace);
+                SharedResources.LogMessage("InitDevice", "Error: " + e.Message + "\n" + e.StackTrace);
                 throw;
             }
         }
