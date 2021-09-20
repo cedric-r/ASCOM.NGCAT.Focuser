@@ -1,13 +1,13 @@
 [Setup]
 AppID={{835503b2-4cbd-4675-b5ad-40f2af06180a}}
 AppName=ASCOM NGCAT Focuser Driver for Robofocus
-AppVerName=ASCOM NGCAT Focuser Driver 1.0.0
-AppVersion=1.0.0
+AppVerName=ASCOM NGCAT Focuser Driver 1.0.5
+AppVersion=1.0.5
 AppPublisher=Cedric Raguenaud <cedric@raguenaud.earth>
 AppPublisherURL=mailto:cedric@raguenaud.earth
 AppSupportURL=https://github.com/cedric-r/ASCOM.NGCAT.Focuser
 AppUpdatesURL=https://github.com/cedric-r/ASCOM.NGCAT.Focuser
-VersionInfoVersion=1.0.0
+VersionInfoVersion=1.0.5
 MinVersion=0,6.0
 DefaultDirName="{cf}\ASCOM\Focuser"
 DisableDirPage=yes

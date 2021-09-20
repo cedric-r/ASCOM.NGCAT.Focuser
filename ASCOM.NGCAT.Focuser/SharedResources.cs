@@ -385,9 +385,16 @@ namespace ASCOM.NGCAT
         static readonly object fileLockObject = new object();
         internal static void LogMessage(string message)
         {
-            lock (fileLockObject)
+            try
             {
-                if (TraceEnabled) File.AppendAllText(@"c:\temp\Focuser.log", message + "\n");
+                lock (fileLockObject)
+                {
+                    if (TraceEnabled) File.AppendAllText(@"c:\temp\Focuser.log", message + "\n");
+                }
+            }
+            catch(Exception e)
+            {
+                // Swallow it.
             }
         }
     }
