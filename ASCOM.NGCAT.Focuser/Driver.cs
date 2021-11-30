@@ -53,16 +53,17 @@ namespace ASCOM.NGCAT
         /// </summary>
         private static string driverDescription = "ASCOM NGCAT Driver for Focuser";
 
-        protected virtual string GET_CURRENT_POS { get { return "FG"; } }
-        protected virtual string GET_TEMPERATURE { get { return "FT"; } }
-        protected virtual string GET_VERSION { get { return "FV"; } }
-        protected virtual string SET_TARGET_POS { get { return "FG"; } }
-        protected virtual string START_ADC_READING { get { return "FV"; } }
-        protected virtual string STOP_MOTION { get { return "FQ"; } }
-        protected virtual string POWER_MODULE { get { return "FP"; } }
-        protected virtual string BACKLASH { get { return "FB"; } }
-        protected virtual string MAXIMUM_TRAVEL { get { return "FL"; } }
-        protected virtual string CONFIGURATION { get { return "FC"; } }
+        protected static string GET_CURRENT_POS { get { return "FG"; } }
+        protected static string GET_TEMPERATURE { get { return "FT"; } }
+        protected static string GET_VERSION { get { return "FV"; } }
+        protected static string SET_TARGET_POS { get { return "FG"; } }
+        protected static string START_ADC_READING { get { return "FV"; } }
+        protected static string STOP_MOTION { get { return "FQ"; } }
+        protected static string POWER_MODULE { get { return "FP"; } }
+        protected static string BACKLASH { get { return "FB"; } }
+        protected static string MAXIMUM_TRAVEL { get { return "FL"; } }
+        protected static string CONFIGURATION { get { return "FC"; } }
+        protected static string SYNC { get { return "FS"; } }
 
         internal static string comPortProfileName = "COM Port"; // Constants used for Profile persistence
         internal static string comPortDefault = "COM1";
@@ -430,7 +431,7 @@ namespace ASCOM.NGCAT
 
         #region IFocuser Implementation
 
-        private int focuserPosition = 0; // Class level variable to hold the current focuser position
+        internal static int focuserPosition = 0; // Class level variable to hold the current focuser position
         private const int focuserSteps = 10000;
         private double LastTemperature { get; set; }
 
@@ -796,12 +797,30 @@ namespace ASCOM.NGCAT
             }
         }
 
-        /// <summary>
-        /// Log helper function that takes formatted strings and arguments
-        /// </summary>
-        /// <param name="identifier"></param>
-        /// <param name="message"></param>
-        /// <param name="args"></param>
+        internal static int Sync(int position)
+        {
+            int temp = -1;
+            try
+            {
+                lock (lockObject)
+                {
+                    temp = SharedResources.ParseNumberAsInt(SharedResources.SendSerialMessage(SYNC + position));
+                }
+                SharedResources.LogMessage("Sync", "Current position set to " + temp);
+            }
+            catch (Exception e)
+            {
+                SharedResources.LogMessage("Sync", "Error: " + e.Message + "\n" + e.StackTrace);
+            }
+            return temp;
+        }
+
+            /// <summary>
+            /// Log helper function that takes formatted strings and arguments
+            /// </summary>
+            /// <param name="identifier"></param>
+            /// <param name="message"></param>
+            /// <param name="args"></param>
         internal static void LogMessage(string identifier, string message, params object[] args)
         {
             var msg = string.Format(message, args);

@@ -80,6 +80,27 @@ namespace ASCOM.NGCAT
             {
                 comboBoxComPort.SelectedItem = Focuser.comPort;
             }
+            textBoxPosition.Text = Focuser.focuserPosition.ToString();
+        }
+
+        private void buttonSync_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(textBoxPosition.Text))
+            {
+                int position = 0;
+                try
+                {
+                    position = Int32.Parse(textBoxPosition.Text);
+                    if (position >= 0 && position < 64000)
+                    {
+                        textBoxPosition.Text = Focuser.Sync(position).ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    SharedResources.LogMessage("Sync button", "Error: " + ex.Message + "\n" + ex.StackTrace);
+                }
+            }
         }
     }
 }

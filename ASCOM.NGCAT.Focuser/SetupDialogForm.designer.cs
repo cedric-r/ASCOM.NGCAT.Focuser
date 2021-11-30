@@ -54,6 +54,9 @@ namespace ASCOM.NGCAT
             this.label2 = new System.Windows.Forms.Label();
             this.chkTrace = new System.Windows.Forms.CheckBox();
             this.comboBoxComPort = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBoxPosition = new System.Windows.Forms.TextBox();
+            this.buttonSync = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picASCOM)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,18 +109,18 @@ namespace ASCOM.NGCAT
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 69);
+            this.label2.Location = new System.Drawing.Point(23, 55);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 15);
+            this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Comm Port";
+            this.label2.Text = "Comm port:";
             // 
             // chkTrace
             // 
             this.chkTrace.AutoSize = true;
             this.chkTrace.Location = new System.Drawing.Point(87, 112);
             this.chkTrace.Name = "chkTrace";
-            this.chkTrace.Size = new System.Drawing.Size(77, 19);
+            this.chkTrace.Size = new System.Drawing.Size(69, 17);
             this.chkTrace.TabIndex = 6;
             this.chkTrace.Text = "Trace on";
             this.chkTrace.UseVisualStyleBackColor = true;
@@ -125,16 +128,45 @@ namespace ASCOM.NGCAT
             // comboBoxComPort
             // 
             this.comboBoxComPort.FormattingEnabled = true;
-            this.comboBoxComPort.Location = new System.Drawing.Point(87, 69);
+            this.comboBoxComPort.Location = new System.Drawing.Point(87, 52);
             this.comboBoxComPort.Name = "comboBoxComPort";
             this.comboBoxComPort.Size = new System.Drawing.Size(90, 21);
             this.comboBoxComPort.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 80);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Sync position:";
+            // 
+            // textBoxPosition
+            // 
+            this.textBoxPosition.Location = new System.Drawing.Point(87, 77);
+            this.textBoxPosition.Name = "textBoxPosition";
+            this.textBoxPosition.Size = new System.Drawing.Size(90, 20);
+            this.textBoxPosition.TabIndex = 9;
+            // 
+            // buttonSync
+            // 
+            this.buttonSync.Location = new System.Drawing.Point(183, 77);
+            this.buttonSync.Name = "buttonSync";
+            this.buttonSync.Size = new System.Drawing.Size(75, 23);
+            this.buttonSync.TabIndex = 10;
+            this.buttonSync.Text = "Sync";
+            this.buttonSync.UseVisualStyleBackColor = true;
+            this.buttonSync.Click += new System.EventHandler(this.buttonSync_Click);
             // 
             // SetupDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(350, 175);
+            this.Controls.Add(this.buttonSync);
+            this.Controls.Add(this.textBoxPosition);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBoxComPort);
             this.Controls.Add(this.chkTrace);
             this.Controls.Add(this.label2);
@@ -164,5 +196,8 @@ namespace ASCOM.NGCAT
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox chkTrace;
         private System.Windows.Forms.ComboBox comboBoxComPort;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxPosition;
+        private System.Windows.Forms.Button buttonSync;
     }
 }
