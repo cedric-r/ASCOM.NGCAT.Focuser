@@ -57,6 +57,8 @@ namespace ASCOM.NGCAT
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxPosition = new System.Windows.Forms.TextBox();
             this.buttonSync = new System.Windows.Forms.Button();
+            this.textBoxCW = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picASCOM)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,7 +120,7 @@ namespace ASCOM.NGCAT
             // chkTrace
             // 
             this.chkTrace.AutoSize = true;
-            this.chkTrace.Location = new System.Drawing.Point(87, 112);
+            this.chkTrace.Location = new System.Drawing.Point(87, 142);
             this.chkTrace.Name = "chkTrace";
             this.chkTrace.Size = new System.Drawing.Size(69, 17);
             this.chkTrace.TabIndex = 6;
@@ -159,11 +161,29 @@ namespace ASCOM.NGCAT
             this.buttonSync.UseVisualStyleBackColor = true;
             this.buttonSync.Click += new System.EventHandler(this.buttonSync_Click);
             // 
+            // textBoxCW
+            // 
+            this.textBoxCW.Location = new System.Drawing.Point(87, 102);
+            this.textBoxCW.Name = "textBoxCW";
+            this.textBoxCW.Size = new System.Drawing.Size(90, 20);
+            this.textBoxCW.TabIndex = 12;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(53, 105);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(28, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "CW:";
+            // 
             // SetupDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(350, 175);
+            this.Controls.Add(this.textBoxCW);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.buttonSync);
             this.Controls.Add(this.textBoxPosition);
             this.Controls.Add(this.label3);
@@ -199,5 +219,7 @@ namespace ASCOM.NGCAT
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxPosition;
         private System.Windows.Forms.Button buttonSync;
+        private System.Windows.Forms.TextBox textBoxCW;
+        private System.Windows.Forms.Label label4;
     }
 }

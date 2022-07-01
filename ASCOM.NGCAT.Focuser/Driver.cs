@@ -28,6 +28,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -69,8 +70,11 @@ namespace ASCOM.NGCAT
         internal static string comPortDefault = "COM1";
         internal static string traceStateProfileName = "Trace Level";
         internal static string traceStateDefault = "false";
+        internal static string CWProfileName = "CW";
+        internal static string CWDefault = "";
 
         internal static string comPort; // Variables to hold the currrent device configuration
+        internal static string CW;
 
         /// <summary>
         /// Private variable to hold the connected state
@@ -639,30 +643,40 @@ namespace ASCOM.NGCAT
         {
             get
             {
-                CheckConnected("Temperature");
-
-                double f;
-                double temp = 0;
-                string hex = "";
-                try
+                if (!String.IsNullOrEmpty(CW))
                 {
-                    lock (lockObject)
+                    SharedResources.LogMessage("Temperature", "Reading temperature from CW " + CW);
+                    DataItem data = RemoteData.GetData(CW).Last();
+                    LastTemperature = Math.Round(data.temperature, 1, MidpointRounding.AwayFromZero);
+                }
+                else
+                {
+                    CheckConnected("Temperature");
+                    SharedResources.LogMessage("Temperature", "Reading temperature Robofocus");
+
+                    double f;
+                    double temp = 0;
+                    string hex = "";
+                    try
                     {
-                        hex = SharedResources.SendSerialMessage(GET_TEMPERATURE);
+                        lock (lockObject)
+                        {
+                            hex = SharedResources.SendSerialMessage(GET_TEMPERATURE);
+                        }
+                        temp = SharedResources.ParseNumberAsDouble(hex);
                     }
-                    temp = SharedResources.ParseNumberAsDouble(hex);
-                }
-                catch (Exception e)
-                {
-                    //throw new FormatException("Invalid hex string received");
-                    SharedResources.LogMessage("Temperature", "Invalid hex string received " + hex + ". " + e.Message + "\n" + e.StackTrace);
-                    return LastTemperature;
-                }
+                    catch (Exception e)
+                    {
+                        //throw new FormatException("Invalid hex string received");
+                        SharedResources.LogMessage("Temperature", "Invalid hex string received " + hex + ". " + e.Message + "\n" + e.StackTrace);
+                        return LastTemperature;
+                    }
 
-                SharedResources.LogMessage("Temperature", "Temperature is " + temp + " steps");
-                f = SharedResources.ConvertTemperature(temp);
-                LastTemperature = Math.Round(f, 1, MidpointRounding.AwayFromZero);
-                SharedResources.LogMessage("Temperature", "Temperature is " + LastTemperature + "C");
+                    SharedResources.LogMessage("Temperature", "Temperature is " + temp + " steps");
+                    f = SharedResources.ConvertTemperature(temp);
+                    LastTemperature = Math.Round(f, 1, MidpointRounding.AwayFromZero);
+                    SharedResources.LogMessage("Temperature", "Temperature is " + LastTemperature + "C");
+                }
                 return LastTemperature;
             }
         }
@@ -781,6 +795,7 @@ namespace ASCOM.NGCAT
                 driverProfile.DeviceType = "Focuser";
                 SharedResources.TraceEnabled = Convert.ToBoolean(driverProfile.GetValue(driverID, traceStateProfileName, string.Empty, traceStateDefault));
                 comPort = driverProfile.GetValue(driverID, comPortProfileName, string.Empty, comPortDefault);
+                CW = driverProfile.GetValue(driverID, CWProfileName, string.Empty, CWDefault);
             }
         }
 
@@ -794,6 +809,7 @@ namespace ASCOM.NGCAT
                 driverProfile.DeviceType = "Focuser";
                 driverProfile.WriteValue(driverID, traceStateProfileName, SharedResources.TraceEnabled.ToString());
                 driverProfile.WriteValue(driverID, comPortProfileName, comPort.ToString());
+                driverProfile.WriteValue(driverID, CWProfileName, CW);
             }
         }
 

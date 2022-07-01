@@ -6,3 +6,5 @@
 /.vs/ASCOM.NGCAT.Focuser/v16
 /ASCOM.NGCAT.Focuser/bin/Debug
 /ASCOM.NGCAT.Focuser/obj
+/.vs/ASCOM.NGCAT.Focuser
+/packages/Newtonsoft.Json.13.0.1

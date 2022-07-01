@@ -1,13 +1,13 @@
 [Setup]
 AppID={{835503b2-4cbd-4675-b5ad-40f2af06180a}}
 AppName=ASCOM NGCAT Focuser Driver for Robofocus
-AppVerName=ASCOM NGCAT Focuser Driver 1.1.0
-AppVersion=1.1.0
+AppVerName=ASCOM NGCAT Focuser Driver 1.2.1
+AppVersion=1.2.1
 AppPublisher=Cedric Raguenaud <cedric@raguenaud.earth>
 AppPublisherURL=mailto:cedric@raguenaud.earth
 AppSupportURL=https://github.com/cedric-r/ASCOM.NGCAT.Focuser
 AppUpdatesURL=https://github.com/cedric-r/ASCOM.NGCAT.Focuser
-VersionInfoVersion=1.1.0
+VersionInfoVersion=1.2.1
 MinVersion=0,6.0
 DefaultDirName="{cf}\ASCOM\Focuser"
 DisableDirPage=yes
@@ -52,6 +52,7 @@ Source: "k:\astro\ngcat\ASCOM.NGCAT.Focuser\ASCOM.NGCAT.Focuser\bin\Debug\ASCOM.
 Source: "k:\astro\ngcat\ASCOM.NGCAT.Focuser\ASCOM.NGCAT.Focuser\bin\Debug\ASCOM.Controls.xml"; DestDir: "{app}"
 Source: "k:\astro\ngcat\ASCOM.NGCAT.Focuser\ASCOM.NGCAT.Focuser\bin\Debug\ASCOM.Internal.Extensions.dll"; DestDir: "{app}"
 Source: "k:\astro\ngcat\ASCOM.NGCAT.Focuser\ASCOM.NGCAT.Focuser\bin\Debug\ASCOM.Internal.Extensions.xml"; DestDir: "{app}"
+Source: "k:\astro\ngcat\ASCOM.NGCAT.Focuser\ASCOM.NGCAT.Focuser\bin\Debug\Newtonsoft.Json.dll"; DestDir: "{app}"
 
 ; Only if driver is .NET
 [Run]

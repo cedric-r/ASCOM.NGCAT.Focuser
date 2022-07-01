@@ -45,6 +45,7 @@ namespace ASCOM.NGCAT
             // Update the state variables with results from the dialogue
             Focuser.comPort = (string)comboBoxComPort.SelectedItem;
             SharedResources.TraceEnabled = chkTrace.Checked;
+            Focuser.CW = (string)textBoxCW.Text;
         }
 
         private void cmdCancel_Click(object sender, EventArgs e) // Cancel button event handler
@@ -81,6 +82,7 @@ namespace ASCOM.NGCAT
                 comboBoxComPort.SelectedItem = Focuser.comPort;
             }
             textBoxPosition.Text = Focuser.focuserPosition.ToString();
+            textBoxCW.Text = Focuser.CW;
         }
 
         private void buttonSync_Click(object sender, EventArgs e)
