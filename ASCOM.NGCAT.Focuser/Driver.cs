@@ -582,26 +582,29 @@ namespace ASCOM.NGCAT
                 SharedResources.LogMessage("Position", "Getting current position");
                 CheckConnected("Position");
 
-                string hex = "";
-                int value = 0;
-
-                try
+                if (!isMoving)
                 {
-                    lock (lockObject)
+                    string hex = "";
+                    int value = 0;
+
+                    try
                     {
-                        hex = SharedResources.SendSerialMessage(GET_CURRENT_POS);
+                        lock (lockObject)
+                        {
+                            hex = SharedResources.SendSerialMessage(GET_CURRENT_POS);
+                        }
+                        value = SharedResources.ParseNumberAsInt(hex);
                     }
-                    value = SharedResources.ParseNumberAsInt(hex);
-                }
-                catch (Exception)
-                {
-                    //throw new FormatException("Invalid hex string received");
-                    SharedResources.LogMessage("Position", "Invalid hex string received " + hex);
-                    return focuserPosition;
-                }
+                    catch (Exception)
+                    {
+                        //throw new FormatException("Invalid hex string received");
+                        SharedResources.LogMessage("Position", "Invalid hex string received " + hex);
+                        return focuserPosition;
+                    }
 
-                //LogMessage("Position", "Return value int:{0} hex:{1}", value, hex);
-                focuserPosition = value;
+                    //LogMessage("Position", "Return value int:{0} hex:{1}", value, hex);
+                    focuserPosition = value;
+                }
                 return focuserPosition;
             }
         }

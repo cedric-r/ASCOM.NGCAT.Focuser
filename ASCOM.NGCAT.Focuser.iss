@@ -1,13 +1,13 @@
 [Setup]
 AppID={{835503b2-4cbd-4675-b5ad-40f2af06180a}}
 AppName=ASCOM NGCAT Focuser Driver for Robofocus
-AppVerName=ASCOM NGCAT Focuser Driver 1.2.1
-AppVersion=1.2.1
+AppVerName=ASCOM NGCAT Focuser Driver 1.2.2
+AppVersion=1.2.2
 AppPublisher=Cedric Raguenaud <cedric@raguenaud.earth>
 AppPublisherURL=mailto:cedric@raguenaud.earth
 AppSupportURL=https://github.com/cedric-r/ASCOM.NGCAT.Focuser
 AppUpdatesURL=https://github.com/cedric-r/ASCOM.NGCAT.Focuser
-VersionInfoVersion=1.2.1
+VersionInfoVersion=1.2.2
 MinVersion=0,6.0
 DefaultDirName="{cf}\ASCOM\Focuser"
 DisableDirPage=yes
@@ -17,7 +17,7 @@ OutputBaseFilename="NGCAT Focuser Setup"
 Compression=lzma
 SolidCompression=yes
 ; Put there by Platform if Driver Installer Support selected
-WizardImageFile="C:\Program Files (x86)\ASCOM\Platform 6 Developer Components\Installer Generator\Resources\WizardImage.bmp"
+WizardImageFile="c:\Program Files (x86)\ASCOM\Developer\Installer Generator\Resources\WizardImage.bmp"
 LicenseFile="k:\astro\ngcat\ASCOM.NGCAT.Focuser\License"
 ; {cf}\ASCOM\Uninstall\Focuser folder created by Platform, always
 UninstallFilesDir="{cf}\ASCOM\Uninstall\Focuser\NGCAT Focuser"
